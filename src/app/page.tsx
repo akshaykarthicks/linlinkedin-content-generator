@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -19,9 +19,14 @@ const formSchema = z.object({
 });
 
 export default function HomePage() {
+  const [isClient, setIsClient] = useState(false);
   const [generatedContent, setGeneratedContent] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -129,7 +134,7 @@ export default function HomePage() {
       <Card className="w-full max-w-3xl shadow-xl rounded-lg">
         <CardHeader className="text-center p-6">
           <div className="flex items-center justify-center mb-4">
-            <Linkedin className="w-10 h-10 sm:w-12 sm:h-12 text-primary mr-3" />
+            {isClient && <Linkedin className="w-10 h-10 sm:w-12 sm:h-12 text-primary mr-3" />}
             <CardTitle className="text-3xl sm:text-4xl md:text-4xl font-headline">LinkedUp Content Generator</CardTitle>
           </div>
           <CardDescription className="text-base sm:text-lg text-muted-foreground px-4">
@@ -157,15 +162,15 @@ export default function HomePage() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full text-lg sm:text-xl py-3.5 sm:py-4 rounded-md" disabled={isLoading}>
+              <Button type="submit" className="w-full text-lg sm:text-xl py-3.5 sm:py-4 rounded-md" disabled={isLoading || !isClient}>
                 {isLoading ? (
                   <>
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    {isClient && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
                     Generating...
                   </>
                 ) : (
                   <>
-                    <Sparkles className="mr-2 h-5 w-5" />
+                    {isClient && <Sparkles className="mr-2 h-5 w-5" />}
                     Generate Content
                   </>
                 )}
@@ -178,8 +183,8 @@ export default function HomePage() {
           <CardFooter className="flex flex-col items-start space-y-4 border-t p-6">
             <div className="flex justify-between items-center w-full">
                 <h3 className="text-xl sm:text-2xl font-headline text-primary">Generated LinkedIn Post:</h3>
-                <Button variant="outline" size="sm" onClick={handleCopy} className="rounded-md text-sm">
-                    <Copy className="mr-2 h-4 w-4" />
+                <Button variant="outline" size="sm" onClick={handleCopy} className="rounded-md text-sm" disabled={!isClient}>
+                    {isClient && <Copy className="mr-2 h-4 w-4" />}
                     Copy
                 </Button>
             </div>

@@ -1,42 +1,32 @@
-# LinkedIn Content Generator
+# 🤖 LinkedIn AI Post Creator — Firebase Studio + n8n + OpenRouter
+[demo](https://9000-firebase-studio-1749023915588.cluster-73qgvk7hjjadkrjeyexca5ivva.cloudworkstations.dev/)
+This project uses **Firebase Studio** (Genkit), **n8n**, and **OpenRouter** to automatically generate professional LinkedIn posts using AI. It allows you to POST input text to a webhook and receive back a ready-to-publish LinkedIn post.
+![Screenshot 2025-06-04 143639](https://github.com/user-attachments/assets/fe25824b-302b-4721-a994-9867981dadf2)
+![Screenshot 2025-06-04 143849](https://github.com/user-attachments/assets/89a56999-a89f-4f59-a387-48b000ce0f64)
 
-This is a Next.js application designed to help you generate content for LinkedIn posts. It leverages AI models to assist in creating engaging and relevant content, including summarizing articles into LinkedIn posts.
+---
 
-## Core Features
+## 📦 Features
 
-- **Content Input:** A text input area for users to provide the base content or ideas for their LinkedIn post.
-- **AI Content Generation:** Utilizes AI models to generate creative, engaging, and relevant LinkedIn content based on user input.
-- **Content Display:** Presents the generated LinkedIn content for review and copying.
-- **Summarize Article to LinkedIn Post:** An AI flow specifically designed to take an article link or text and summarize it into a suitable LinkedIn post.
+- 🌐 **Webhook-based API** endpoint (via n8n)
+- 🧠 **AI Agent** using Genkit and LangChain
+- ✍️ Trained with content guidelines for LinkedIn
+- 🔗 Integrated with **OpenRouter** for AI responses
+- ⚡ Fast, no-code/low-code workflow with n8n
 
-## Technologies Used
+---
 
-- **Next.js:** A React framework for building server-side rendered and static web applications.
-- **React:** A JavaScript library for building user interfaces.
-- **Tailwind CSS:** A utility-first CSS framework for styling.
-- **Genkit:** A framework for building AI-powered applications.
-- **AI Models:** Integration with AI models for content generation and summarization.
+## 🧰 Tech Stack
 
-## Project Structure
+- [Firebase Studio / Genkit](https://firebase.google.com/genkit)
+- [n8n](https://n8n.io/) — for orchestrating the workflow
+- [OpenRouter](https://openrouter.ai/) — for AI-generated content
+- Webhook for HTTP input/output
 
-- `src/app/`: Contains the main application pages and layout.
-- `src/ai/`: Houses the AI-related code, including Genkit configuration and AI flows.
-- `src/ai/flows/`: Contains the definitions for the AI flows, such as `summarize-article-to-linkedin-post.ts`.
-- `src/components/`: Contains reusable UI components.
-- `src/hooks/`: Custom React hooks used in the application.
-- `src/lib/`: Utility functions and helper code.
-- `docs/`: Documentation files, including the blueprint.md.
+---
 
-## Styling Guidelines
+## 🧪 How It Works
 
-Based on the `docs/blueprint.md`, the application follows these styling guidelines:
+![Screenshot 2025-06-04 144811](https://github.com/user-attachments/assets/997f1264-f6f3-4d0c-b9e7-7381b9441efa)
 
-- **Primary color:** A muted blue (#6699CC)
-- **Background color:** Light gray (#F0F0F0)
-- **Accent color:** Soft green (#8FBC8F)
-- **Body and headline font:** 'PT Sans'
-- Clean and straightforward layout.
-- Use simple and professional icons.
-- Subtle loading animation during AI processing.
 
-## Getting Started

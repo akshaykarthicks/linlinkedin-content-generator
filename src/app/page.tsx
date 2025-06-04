@@ -42,7 +42,7 @@ export default function HomePage() {
 
     // Attempt 1: Fetch content from n8n webhook
     try {
-      const n8nResponse = await fetch('https://aks8888.app.n8n.cloud/webhook/d01f9cfa-0fc3-47c3-90a9-a35b63bab27c', {
+      const n8nResponse = await fetch('YOUR_WEBHOOK_URL', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -37,7 +37,7 @@ export default function HomePage() {
 
     // Attempt 1: Fetch content from n8n webhook
     try {
-      const n8nResponse = await fetch('https://aks8888.app.n8n.cloud/webhook-test/d01f9cfa-0fc3-47c3-90a9-a35b63bab27c', {
+      const n8nResponse = await fetch('https://aks8888.app.n8n.cloud/webhook/d01f9cfa-0fc3-47c3-90a9-a35b63bab27c', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -125,30 +125,30 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 md:p-8">
-      <Card className="w-full max-w-2xl shadow-xl rounded-lg">
+    <div className="flex flex-col items-center justify-center min-h-screen p-6 sm:p-8 md:p-10">
+      <Card className="w-full max-w-3xl shadow-xl rounded-lg">
         <CardHeader className="text-center p-6">
-          <div className="flex items-center justify-center mb-3">
+          <div className="flex items-center justify-center mb-4">
             <Linkedin className="w-10 h-10 sm:w-12 sm:h-12 text-primary mr-3" />
-            <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-headline">LinkedUp Content Generator</CardTitle>
+            <CardTitle className="text-3xl sm:text-4xl md:text-4xl font-headline">LinkedUp Content Generator</CardTitle>
           </div>
-          <CardDescription className="text-sm sm:text-base text-muted-foreground px-4">
+          <CardDescription className="text-base sm:text-lg text-muted-foreground px-4">
             Enter your base idea, and let us craft an engaging LinkedIn post for you!
           </CardDescription>
         </CardHeader>
         <CardContent className="p-6">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
               <FormField
                 control={form.control}
                 name="userInput"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-md sm:text-lg font-medium">Your Content Idea</FormLabel>
+                    <FormLabel className="text-lg sm:text-xl font-medium">Your Content Idea</FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="e.g., The future of remote work and its impact on team collaboration..."
-                        className="min-h-[120px] sm:min-h-[140px] resize-y text-base p-3 rounded-md focus:ring-primary focus:border-primary"
+                        className="min-h-[140px] sm:min-h-[160px] resize-y text-base p-4 rounded-md focus:ring-primary focus:border-primary"
                         {...field}
                         disabled={isLoading}
                       />
@@ -157,7 +157,7 @@ export default function HomePage() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full text-base sm:text-lg py-3 sm:py-4 rounded-md" disabled={isLoading}>
+              <Button type="submit" className="w-full text-lg sm:text-xl py-3.5 sm:py-4 rounded-md" disabled={isLoading}>
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-5 w-5 animate-spin" />
@@ -177,13 +177,13 @@ export default function HomePage() {
         {generatedContent && !isLoading && (
           <CardFooter className="flex flex-col items-start space-y-4 border-t p-6">
             <div className="flex justify-between items-center w-full">
-                <h3 className="text-lg sm:text-xl font-headline text-primary">Generated LinkedIn Post:</h3>
-                <Button variant="outline" size="sm" onClick={handleCopy} className="rounded-md">
+                <h3 className="text-xl sm:text-2xl font-headline text-primary">Generated LinkedIn Post:</h3>
+                <Button variant="outline" size="sm" onClick={handleCopy} className="rounded-md text-sm">
                     <Copy className="mr-2 h-4 w-4" />
                     Copy
                 </Button>
             </div>
-            <div className="w-full p-4 bg-secondary rounded-md shadow-inner whitespace-pre-wrap text-sm sm:text-base leading-relaxed">
+            <div className="w-full p-6 bg-muted rounded-md whitespace-pre-wrap text-base leading-relaxed text-foreground">
               {generatedContent}
             </div>
           </CardFooter>
